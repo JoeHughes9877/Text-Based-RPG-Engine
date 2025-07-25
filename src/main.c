@@ -1,18 +1,19 @@
-#include "../include/database.h"
-#include "../include/inventory.h"
-#include "../include/room.h"
-#include "../include/utils.h"
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
 
-void opening();
-void game_loop();
+#include "database.h"
+#include "inventory.h"
+#include "room.h"
+#include "utils.h"
+
+void opening(void);
+void game_loop(void);
 void delay(int number_of_seconds);
 
 char *lower_player_input(char *input);
 
-int main() {
+int main(void) {
   set_start_room();
   inventory = init_inventory();
   items.name = init_items();
@@ -25,7 +26,7 @@ int main() {
   game_loop();
 }
 
-void opening() {
+void opening(void) {
   printf("====================================================================="
          "==========\n");
   printf("                        The Elder Scrolls: Shadows of Tamriel\n");
@@ -60,7 +61,7 @@ void opening() {
   printf("And so, %s... what destiny will you carve from the chaos?\n", name);
 }
 
-void game_loop() {
+void game_loop(void) {
   while (1) {
     char *player_input = get_string("What do you do? ");
 

@@ -1,16 +1,18 @@
-#include "../include/inventory.h"
-#include "../include/database.h"
-#include "../include/room.h"
-#include "../include/vector.h"
+#include "inventory.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "database.h"
+#include "room.h"
+#include "vector.h"
 
 struct vector *inventory = NULL;
 
 const int INVENTORY_SIZE = 8;
 
-void print_inventory() {
+void print_inventory(void) {
   if (inventory->size == 0) {
     printf("You check your pockets... Yep, still nothing.\n");
     printf("Maybe it’s time to ‘borrow’ a few things...\n");
@@ -62,8 +64,8 @@ void remove_item_from_inventory(char *players_input) {
   }
   // if empty
   if (inventory->size == 0) {
-    printf(
-        "Even Sheogorath couldn’t conjure an item from *this* sorry state.\n");
+    printf("Even Sheogorath couldn’t conjure an item from *this* sorry "
+           "state.\n");
     return;
   }
 
@@ -79,7 +81,7 @@ void remove_item_from_inventory(char *players_input) {
   }
 }
 
-struct vector *init_inventory() {
+struct vector *init_inventory(void) {
   struct vector *inventory = malloc(sizeof(struct vector));
   inventory->size = 0;
   inventory->capacity = 8;
